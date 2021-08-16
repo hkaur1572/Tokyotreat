@@ -24,8 +24,6 @@ import com.tokyotreat.Utils.Utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-
-
 public class BaseClass {
 
 	public static WebDriver driver;
@@ -39,7 +37,7 @@ public class BaseClass {
 		prop = new Properties();
 		try {
 			FileInputStream ip = new FileInputStream("./src\\main\\java\\com\\tokyotreat\\config\\config.properities");
-			
+
 			try {
 				prop.load(ip);
 			} catch (IOException e) {
@@ -52,6 +50,7 @@ public class BaseClass {
 		}
 
 	}
+
 	@BeforeClass
 	public void LoggerSetup() {
 		logger = logger.getLogger(BaseClass.class);
@@ -64,8 +63,7 @@ public class BaseClass {
 
 	public static void intialisation() {
 		String browser = prop.getProperty("browser");
-		
-		
+
 		if (browser.equals("Edge")) {
 
 			WebDriverManager.edgedriver().setup();
@@ -81,14 +79,15 @@ public class BaseClass {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		}
-driver.manage().window().maximize();
+		driver.manage().window().maximize();
 
-driver.manage().deleteAllCookies();
-driver.manage().timeouts().pageLoadTimeout(Utils.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
-driver.get(prop.getProperty("url"));
-		
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().pageLoadTimeout(Utils.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
+		driver.get(prop.getProperty("url"));
+
 	}
+
 	public void waitForDocumentCompleteState(int secondsToWait) {
 		new WebDriverWait(driver, secondsToWait).until((ExpectedCondition<Boolean>) wd -> {
 

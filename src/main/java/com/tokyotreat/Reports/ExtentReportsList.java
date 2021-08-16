@@ -35,8 +35,8 @@ public class ExtentReportsList extends TestListenerAdapter {
 		extentReports.setSystemInfo("Environemnt", "Dev");
 		extentReports.setSystemInfo("Tester Name", "Harpreet");
 
-		htmlReporter.config().setDocumentTitle("Shopping Website QA Automation Project"); // Title of the report
-																							// generated
+		htmlReporter.config().setDocumentTitle("Tokyo Treat QA Automation Project"); // Title of the report
+																						// generated
 		htmlReporter.config().setReportName("Automation Report"); // Name of the report generated
 		htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP); // location of the chart in the report
 		htmlReporter.config().setTheme(Theme.STANDARD);
